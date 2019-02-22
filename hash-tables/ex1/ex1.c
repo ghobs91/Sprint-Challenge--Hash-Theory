@@ -7,7 +7,9 @@ Answer *get_indices_of_item_weights(int *weights, int length, int limit)
 {
   HashTable *ht = create_hash_table(16);
   // YOUR CODE HERE
+
   Answer *answers = malloc(sizeof(Answer));
+  // Default null setting
   answers->index_1 = -1;
   answers->index_2 = -1;
   

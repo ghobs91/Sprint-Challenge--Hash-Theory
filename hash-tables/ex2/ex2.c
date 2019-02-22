@@ -11,6 +11,22 @@ char **reconstruct_trip(Ticket **tickets, int length)
 
   // YOUR CODE HERE
 
+  for (int i = 0; i < length; i++)
+  {
+    // Populate hash table with all existing tickets
+    hash_table_insert(ht, tickets[i]->source, tickets[i]->destination);
+  }
+
+  // Find beginning of the route by looking for key value pair where previous airport is NONE
+  char *airport = strdup(hash_table_retrieve(ht, "NONE"));
+  for (int i = 0; i < length; i++)
+  {
+    //iterate through hash table in so that previous and destination airports are paired in order
+    route[i] = strdup(airport);
+    airport = hash_table_retrieve(ht, airport);
+  }
+
+  destroy_hash_table(ht);
   return route;
 }
 
